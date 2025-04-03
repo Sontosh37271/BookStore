@@ -16,11 +16,11 @@ export const signup = async(req, res) => {
         await createdUser.save();
         res.status(201).json({
             message: "User created successfully",
-            // user: {
-            //     _id: createdUser._id,
-            //     fullname: createdUser.fullname,
-            //     email: createdUser.email,
-            // },
+            user: {
+                _id: createdUser._id,
+                fullname: createdUser.fullname,
+                email: createdUser.email,
+            },
         });
     } catch (error) {
         console.log("Error: " + error.message);
