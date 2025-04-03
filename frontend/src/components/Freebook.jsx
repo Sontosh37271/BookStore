@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-//import list from '../../public/list.json'
+import list from '../../public/list.json'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -14,7 +14,7 @@ const Freebook = () => {
         const res = await axios.get("https://bookstore-0ek3.onrender.com/book");
 
         const data = res.data.filter((data) => data.category === "Free");
-        console.log(data);
+        //console.log(data);
         setBook(data);
       } catch (error) {
         console.log(error);
@@ -22,8 +22,8 @@ const Freebook = () => {
     };
     getBook();
   }, []);
-  // const filterData = list.filter(book => book.category === "Free");
-  // console.log(filterData);
+  const filterData = list.filter(book => book.category === "Free"); // i do it commnet when backend deployment is done
+  //console.log(filterData);
 
   var settings = {
     dots: true,
@@ -73,7 +73,7 @@ const Freebook = () => {
    </div>
    <div className="slider-container">
       <Slider {...settings}>
-        {book.map((item)=>{
+        {filterData.map((item)=>{ // book
             return <Cards item = {item} key = {item.id}/> 
         })}
       </Slider>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-//import list from '../../public/list.json'
+import list from '../../public/list.json'
 import Cards from './Cards'
 import axios from "axios";
 import { Link } from 'react-router-dom'
@@ -9,7 +9,7 @@ const Course = () => {
     const getBook = async () => {
       try {
         const res = await axios.get("https://bookstore-0ek3.onrender.com/book");
-        console.log(res.data);
+        //console.log(res.data);
         setBook(res.data);
       } catch (error) {
         console.log(error);
@@ -42,7 +42,7 @@ const Course = () => {
         </div>
         <div className='mt-12 grid grid-cols-1 md:grid-cols-4'>
          {
-          book.map((item)=>{
+          list.map((item)=>{ //Book is added when backend deployment is done
             return (<Cards key = {item.id} item = {item}/>)
           })
          }
